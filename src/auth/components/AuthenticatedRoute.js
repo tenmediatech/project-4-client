@@ -7,7 +7,7 @@ const AuthenticatedRoute = ({
   render,
   ...rest
 }) => {
-  if (user && render) {
+  if (user && render ) {
     return <Route {...rest} render={render} />
   } else {
     return <Route {...rest} render={props =>

@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import './App.scss'
 import { Route, Link } from 'react-router-dom'
+import Movies from './Movies'
+
 
 import AuthenticatedRoute from './auth/components/AuthenticatedRoute'
 import Header from './header/Header'
@@ -8,6 +10,7 @@ import SignUp from './auth/components/SignUp'
 import SignIn from './auth/components/SignIn'
 import SignOut from './auth/components/SignOut'
 import ChangePassword from './auth/components/ChangePassword'
+import WeatherApp from './auth/components/WeatherApp'
 
 class App extends Component {
   constructor () {
@@ -40,7 +43,7 @@ class App extends Component {
       <React.Fragment>
         <Header user={user} />
         {flashMessage && <h3 className={flashType}>{flashMessage}</h3>}
-        
+
         <main className="container">
           <Route path='/sign-up' render={() => (
             <SignUp flash={this.flash} setUser={this.setUser} />
@@ -51,6 +54,8 @@ class App extends Component {
           <AuthenticatedRoute user={user} path='/sign-out' render={() => (
             <SignOut flash={this.flash} clearUser={this.clearUser} user={user} />
           )} />
+          <AuthenticatedRoute user={user} exact path="/movies" component={Movies}/>
+          <AuthenticatedRoute user={user} exact path="/weatherapp" component={WeatherApp}/>
           <AuthenticatedRoute user={user} path='/change-password' render={() => (
             <ChangePassword flash={this.flash} user={user} />
           )} />
