@@ -1,10 +1,25 @@
 import React from 'react'
 
-const Titles = () => (
-  <div>
-    {/*<h1 className="title-container__title">Find Weather</h1>*/}
-    <h3 className="title-container__subtitle">Weather of Life is always changing</h3>
+const Titles = props => (
+
+  <div className="weather__infoleft" style={{backgroundColor:'#bdeefc', border:'solid 1px white', borderRadius:'10px'}}>
+  	 {
+  	 	props.city && props.country && <p>
+        <span className="weather__condition"> { props.description } <img src={ props.icon } style={{width:'70px'}}/></span>
+  	 		<span className="weather__valueleft" style={{fontSize: '60px'}}> { props.city }, { props.country }</span>
+  	 	</p>
+  	 }
+  	 {
+  	 	props.temperature && <ul>
+        <li>Temperature: <span className="weather__valueleftdetail"> { props.temperature }</span></li>
+        <li>Humidity: <span className="weather__valueleftdetail"> { props.humidity }</span></li>
+  	 	</ul>
+  	 }
+  	 {
+  	 	props.error && <p className="weather__error">{ props.error }</p>
+  	 }
   </div>
+  // </div>
 )
 
 export default Titles

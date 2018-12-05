@@ -27,7 +27,7 @@ const alwaysOptions = (
 
 const Header = ({ user }) => (
   <header className="main-header">
-    <h1>Weather Me</h1>
+    <h1 style={{fontWeight:'200', fontSize:'70px'}}>Weather Me</h1>
     <nav>
       { user && <span>Welcome, {user.email}</span>}
       { user ? authenticatedOptions : unauthenticatedOptions }

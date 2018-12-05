@@ -4,19 +4,21 @@ import Titles from './Titles'
 import Form from './Form'
 import Weather from './Weather'
 import Chart from './Chart'
+import Weekchart from './Weekchart'
+import Formtitle from './Formtitle'
 
 const API_KEY = 'e97bfcf895700208a7299aca4aabac62'
 
 class WeatherApp extends React.Component {
   state = {
-    city: undefined,
-    country: undefined,
-    // temperature: undefined,
-    // humidity: undefined,
-    // description: undefined,
-    // icon: undefined,
+    city: '',
+    country: '',
+    temperature: '',
+    humidity: '',
+    description: '',
+    icon: '',
     list: [],
-    error: undefined,
+    error: ''
   }
   getWeather = async (e) => {
     e.preventDefault()
@@ -40,19 +42,19 @@ class WeatherApp extends React.Component {
       })
     } catch(err) {
       this.setState({
-        city: undefined,
-        country: undefined,
-        // temperature: undefined,
-        // humidity: undefined,
-        // description: undefined,
-        // icon: undefined,
+        city: '',
+        country: '',
+        temperature: '',
+        humidity: '',
+        description: '',
+        icon: '',
         list: [],
         error: 'Oops enter valid input'
       })
     }
   }
   render() {
-    const todayWeather = this.state.list.map(interval=>{
+    const weekWeather = this.state.list.map(interval=>{
       // const { temp, humidity, description, icon } = interval
       const temp = interval.main.temp
       const humidity = interval.main.humidity
@@ -75,17 +77,12 @@ class WeatherApp extends React.Component {
         </tr>
       )
     })
-
     return (
       <div>
         <div className="wrapper">
           <div className="main">
             <div className="col-xs-5 title-container">
-              <Titles />
-            </div>
-            <div className="col-xs-7 form-container">
-              <Form getWeather={this.getWeather}/>
-              <Weather
+              <Titles
                 temperature={this.state.temperature}
                 humidity={this.state.humidity}
                 city={this.state.city}
@@ -94,12 +91,29 @@ class WeatherApp extends React.Component {
                 icon={this.state.icon}
                 error={this.state.error}
               />
-              <table>
+            </div>
+            <div className="col-xs-7 form-container">
+              <Form getWeather={this.getWeather}/>
+              {/*<Weather
+                temperature={this.state.temperature}
+                humidity={this.state.humidity}
+                city={this.state.city}
+                country={this.state.country}
+                description={this.state.description}
+                icon={this.state.icon}
+                error={this.state.error}
+              />*/}
+              <Formtitle
+                city={this.state.city}
+                country={this.state.country}
+              />
+              <table className="table" style={{fontSize:'14px'}}>
                 <tbody>
-                  {todayWeather}
+                  {weekWeather}
                 </tbody>
               </table>
               {/*<Chart cityData={this.state}/>*/}
+              {/*<Weekchart cityData={todayWeather}/>*/}
             </div>
           </div>
         </div>
