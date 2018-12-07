@@ -1,13 +1,14 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 import axios from 'axios'
 import apiUrl from '../src/apiConfig.js'
+import { Link, withRouter, Redirect } from 'react-router-dom'
 
 class CreateNew extends React.Component {
   state = {
     profile:{
       name: '',
-      location: ''
+      location: '',
+      new: false
     },
     flashMessage: ''
   }
@@ -36,10 +37,15 @@ class CreateNew extends React.Component {
         }
       })
     }).then(()=>{
-      this.props.history.push('/weatherapp')
+      this.setState({ new: true })
+      this.props.history.push('/profileindex/')
     })
   }
+
   render() {
+    if (this.state.new === true) {
+      return <Redirect to='/profiles' />
+    }
     const user = this.props.user
     return (
       <React.Fragment>
@@ -50,11 +56,9 @@ class CreateNew extends React.Component {
           <input name='location' type="text" value={this.state.profile.location} onChange={this.handleChange} placeholder='Location' style={{border:'solid 1px #000', width:'240px', marginLeft:'20px'}}/>
           <button type='submit' onClick={(event) => this.createProfile(event, user)}>Create</button>
         </form>
-        <Link to="/home">Go back to Home</Link>
       </React.Fragment>
     )
-    this.props.history.push('/profileindex')
   }
 }
 
-export default CreateNew
+export default withRouter(CreateNew)

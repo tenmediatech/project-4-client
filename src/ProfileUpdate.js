@@ -1,8 +1,8 @@
 import React from 'react'
-import { Link, withRouter } from 'react-router-dom'
+import { Link, withRouter, Redirect } from 'react-router-dom'
 import axios from 'axios'
 import apiUrl from '../src/apiConfig.js'
-import { handleErrors } from '/Users/tenzinmigmar/wdi/projects/project-4-client/src/auth/api.js'
+import { handleErrors } from './auth/api.js'
 import './App.scss'
 import messages from './auth/messages'
 
@@ -10,15 +10,16 @@ class ProfileUpdate extends React.Component {
   state = {
     profile: {
       name: '',
-      location: ''
+      location: '',
+      edited: false
     },
-    flashMessage: ''
+    flashMessage: '',
   }
 
   handleChange = (event) => {
     const newProfile = { ...this.state.profile, [event.target.name]: event.target.value }
     this.setState({
-      profile: newProfile
+      profile: newProfile,
     })
   }
 
@@ -26,7 +27,7 @@ class ProfileUpdate extends React.Component {
   //   [event.target.name]: event.target.value
   // })
 
-  handleUpdate = (event, user) => {
+  handleUpdate = (event, user, edited) => {
     event.preventDefault()
     const { id } = this.props
     console.log(id)
@@ -44,12 +45,18 @@ class ProfileUpdate extends React.Component {
           location: location
         }
       })
-    }).then(()=>{
-      this.props.history.push('/weatherapp')
     })
+      .then(handleErrors)
+      .then(()=>{
+        this.setState({ edited: true })
+        this.props.history.push('/profileindex/')
+      })
   }
 
   render() {
+    if (this.state.edited === true) {
+      return <Redirect to='/profiles' />
+    }
     const {name, location} = this.state
     const { id, user } = this.props
     return (

@@ -1,10 +1,13 @@
 import React from 'react'
-import { Link, withRouter } from 'react-router-dom'
+import { Link, withRouter, Redirect } from 'react-router-dom'
 import axios from 'axios'
 import apiUrl from './apiConfig.js'
 
 
 class ProfileDelete extends React.Component{
+  state = {
+    deleted: false
+  }
     handleDelete = event => {
       event.preventDefault()
       const { id } = this.props
@@ -17,10 +20,14 @@ class ProfileDelete extends React.Component{
           'Authorization':`Token token=${user.token}`
         }
       }).then(()=>{
-        this.props.history.push('/weatherapp')
+        this.setState({ deleted: true })
+        this.props.history.push('/profileindex/')
       })
     }
     render(){
+      if (this.state.deleted === true) {
+        return <Redirect to='/profiles' />
+      }
       return (
         <React.Fragment>
           <form onSubmit={this.handleDelete}>

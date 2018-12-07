@@ -11,8 +11,8 @@ class Chart extends Component {
         {
           label: 'Day Temperature',
           data: temp,
-          backgroundColor: 'rgba(255, 255, 255, 0.6)',
-          borderColor: 'rgba(255,99,132,1)',
+          backgroundColor: 'rgba(255, 255, 0, 0.6)',
+          borderColor: 'rgba(000, 000, 000, 1)',
           borderWidth: 1
         }
       ]
@@ -39,7 +39,7 @@ class Chart extends Component {
                   },
                   scaleLabel: {
                     display: true,
-                    labelString: 'Day'
+                    labelString: 'Data each 3 Hour'
                   }
                 }],
                 yAxes: [{
