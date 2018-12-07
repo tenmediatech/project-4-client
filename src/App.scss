@@ -86,7 +86,13 @@ $charcoal: #ccc;
   color: #000;
   width: 40%;
   padding-left: 30px;
+  padding-right: 50px;
   padding-right: 20px;
+}
+
+.chart-container {
+  background-size: cover;
+  color: #fff;
 }
 
 // .title-container__title {
@@ -103,36 +109,27 @@ $charcoal: #ccc;
 // }
 
 .form-container {
-  background-color: #2c3e50;
-  height: 100vh;
+  // background-color: #2c3e50;
+  height: 148vh;
   padding-top: 50px;
-  padding-left: 90px;
+  padding-left: 30px;
   margin-bottom: 100px;
   overflow: hidden;
-  color: white;
+  color: #000;
+  background: url('img/back.jpeg') center center no-repeat;
 }
 
-// .styled-select {
-//   background-color: transparent;
-//   border: 0;
-//   border-bottom: solid 1px #f16051;
-//   width: 20%;
-//   padding-bottom: 4px;
-//   color: #fff !important;
-//   font-weight: lighter;
-//   letter-spacing: 2px;
-//   margin-bottom: 30px;
-//   margin-right: 20px;
-//   font-size: 20px;
-// }
+.profileform {
+  color: black;
+}
 
-input[type="text"] {
+input[type="text"]:not(.profileinput) {
   background-color: transparent;
   border: 0;
-  border-bottom: solid 1px #f16051;
+  // border-bottom: solid 1px #f16051;
+  border-bottom: solid 1px #fff;
   width: 30%;
   padding-bottom: 4px;
-  color: #fff !important;
   font-weight: lighter;
   letter-spacing: 2px;
   margin-bottom: 30px;
@@ -140,11 +137,13 @@ input[type="text"] {
   font-size: 20px;
 }
 
-input[type="text"] {
+
+
+input[type="text"]:not(.profileinput) {
     outline: none;
 }
 
-input:-webkit-autofill {
+input:-webkit-autofill:not(.profileinput) {
     -webkit-box-shadow: 0 0 0 30px #2c3e50 inset;
     -webkit-text-fill-color: #fff !important;
 }
@@ -203,8 +202,10 @@ button:active {
   font-size: 20px;
   letter-spacing: 2px;
   margin-top: -260px;
-  background-color: #bdeefc;
-  opacity: .8;
+  background: #FFEFBA;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to top, #FFFFFF, #FFEFBA);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to top, #FFFFFF, #FFEFBA); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  opacity: .6;
   padding-left: 20px;
   padding-top: 10px;
 }
@@ -214,13 +215,13 @@ button:active {
 }
 
 .weather__valueleft {
-  color: green;
+  color: #000;
   font-weight: 100;
 }
 
 .weather__condition {
-  color: #3e4042;
-  font-size: 28px;
+  color: red;
+  font-size: 36px;
 }
 
 .weather__valueleftdetail {

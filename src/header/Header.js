@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import logo from './logo.png'
 
 import './Header.scss'
 
@@ -7,7 +8,7 @@ const authenticatedOptions = (
   <React.Fragment>
     <Link to="/change-password">Change Password</Link>
     <Link to="/sign-out">Sign Out</Link>
-    <Link to="/movies">Show Movies</Link>
+    <Link to="/profileindex">Profile</Link>
     <Link to="/weatherapp">Weather Forecast</Link>
   </React.Fragment>
 )
@@ -27,7 +28,8 @@ const alwaysOptions = (
 
 const Header = ({ user }) => (
   <header className="main-header">
-    <h1 style={{fontWeight:'200', fontSize:'70px'}}>Weather Me</h1>
+    <img src={logo} alt="Logo" style={{width:'100px', marginLeft:'18px', paddingRight:'14px'}}/>
+    <h1 style={{fontWeight:'200', fontSize:'60px', color:'#fff'}}>this.weather</h1>
     <nav>
       { user && <span>Welcome, {user.email}</span>}
       { user ? authenticatedOptions : unauthenticatedOptions }

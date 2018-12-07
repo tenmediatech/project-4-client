@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import './App.scss'
 import { Route, Link } from 'react-router-dom'
-import Movies from './Movies'
 
 
 import AuthenticatedRoute from './auth/components/AuthenticatedRoute'
@@ -10,7 +9,13 @@ import SignUp from './auth/components/SignUp'
 import SignIn from './auth/components/SignIn'
 import SignOut from './auth/components/SignOut'
 import ChangePassword from './auth/components/ChangePassword'
+
+// My Component
 import WeatherApp from './auth/components/WeatherApp'
+import ProfileIndex from './ProfileIndex'
+import CreateNew from './CreateNew'
+import Profile from './Profile'
+import ProfileUpdate from './ProfileUpdate'
 
 class App extends Component {
   constructor () {
@@ -54,12 +59,28 @@ class App extends Component {
           <AuthenticatedRoute user={user} path='/sign-out' render={() => (
             <SignOut flash={this.flash} clearUser={this.clearUser} user={user} />
           )} />
-          <AuthenticatedRoute user={user} exact path="/movies" component={Movies}/>
           <AuthenticatedRoute user={user} exact path="/weatherapp" component={WeatherApp}/>
           <AuthenticatedRoute user={user} path='/change-password' render={() => (
             <ChangePassword flash={this.flash} user={user} />
           )} />
         </main>
+
+        <Route exact path="/profileindex/:id/updateprofile" render={()=>(
+          <ProfileUpdate user={user}/>
+        )} />
+
+        <Route exact path="/createNew" render={()=>(
+          <CreateNew user={user}/>
+        )} />
+
+        <AuthenticatedRoute user={user} path='/profileindex' render={() => (
+          <ProfileIndex user={user} />
+        )} />
+
+        <Route exact path="/profileindex/:id" render={()=>(
+          <Profile user={user}/>
+        )} />
+
       </React.Fragment>
     )
   }

@@ -3,50 +3,59 @@ import {Bar, Line, Pie} from 'react-chartjs-2'
 
 class Chart extends Component {
   render() {
-    const { cityData } = this.props
-    const { temperature, city, country, humidity, description, list, error } = cityData
-
+    const { temp } = this.props
+    console.log(temp)
     const tempData = {
-      labels: [list],
+      labels: temp,
       datasets: [
         {
-          label: 'Temperature',
-          data: [temperature],
-          backgroundColor: ['rgba(255, 99, 132, 0.6)',]
-        }
-      ]
-    }
-
-    const humidityData = {
-      labels: [city],
-      datasets: [
-        {
-          label: 'Humidity',
-          data: [humidity ],
-          backgroundColor: [ 'rgba(75, 192, 192, 0.6)']
+          label: 'Day Temperature',
+          data: temp,
+          backgroundColor: 'rgba(255, 255, 255, 0.6)',
+          borderColor: 'rgba(255,99,132,1)',
+          borderWidth: 1
         }
       ]
     }
     return(
-      <div className="chart">
-        <Bar
-          data={humidityData}
-          options={{
-            title: {
-              display: true,
-              text: 'Large'
-            }
-          }}
-        />
-        {/*<Bar
-          data={humidityData}
-          options={{
-            title: {
-              display: true,
-              text: 'Large'
-            }
-          }}
-        />*/}
+      <div className="chart-container">
+        <div className="chart" >
+          <Bar
+            data={tempData}
+            options={{
+              responsive: true,
+              tooltips: {
+                mode: 'label',
+              },
+              hover: {
+                mode: 'nearest',
+                intersect: true
+              },
+              scales: {
+                xAxes: [{
+                  display: true,
+                  gridLines: {
+                    display: false
+                  },
+                  scaleLabel: {
+                    display: true,
+                    labelString: 'Day'
+                  }
+                }],
+                yAxes: [{
+                  display: true,
+                  gridLines: {
+                    display: false
+                  },
+                  scaleLabel: {
+                    display: true,
+                    labelString: '°C'
+                  }
+                }]
+              }
+            }}
+          />
+        </div>
       </div>
     )
   }
