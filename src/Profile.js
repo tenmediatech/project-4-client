@@ -32,10 +32,6 @@ class Profile extends React.Component {
 
     return (
       <React.Fragment>
-        <h4>Profile:</h4>
-        <p>Name: {this.state.profile.name}</p>
-        <p>Location: {this.state.profile.location}</p>
-        <h2>Edit Profile</h2>
         <ProfileUpdate id={id} user={user} component={ProfileUpdate}/>
       </React.Fragment>
     )

@@ -20,12 +20,12 @@ class ProfileIndex extends React.Component {
         const {id, name, location} = profile
         const { user } = this.props
         return (
-          <tr key={id}>
-            <td>
+          <tr key={id} className="table-info">
+            <td className="table-primary">
               <Link to={`/profileindex/${id}`}>{ name }</Link>
             </td>
-            <td>{ location }</td>
-            <td>
+            <td className="table-primary">{ location }</td>
+            <td className="table-primary">
               <ProfileDelete id={id} user={user} component={ProfileDelete}/>
             </td>
           </tr>
@@ -34,15 +34,17 @@ class ProfileIndex extends React.Component {
 
       return (
         <React.Fragment>
-          <h1>Profiles</h1>
-          <h3 style={{display: 'inline-block'}}>
-            <Link to="/createNew">Add Profile</Link>
-          </h3>
-          <table>
-            <tbody>
-              {profiles_rows}
-            </tbody>
-          </table>
+          <div className="profileindex">
+            <h1>Profiles</h1>
+            <h3 style={{display: 'inline-block'}}>
+              <Link to="/createNew" className="btn btn-primary">Add Profile</Link>
+            </h3>
+            <table className="table">
+              <tbody>
+                {profiles_rows}
+              </tbody>
+            </table>
+          </div>
         </React.Fragment>
       )
     }

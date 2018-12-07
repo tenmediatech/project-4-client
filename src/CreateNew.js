@@ -49,13 +49,15 @@ class CreateNew extends React.Component {
     const user = this.props.user
     return (
       <React.Fragment>
-        <h1>Add or Edit Profile</h1>
-        <p> {this.state.flashMessage}</p>
-        <form>
-          <input name='name' type="text" value={this.state.profile.name} onChange={this.handleChange} placeholder='Name' style={{border:'solid 1px #000', width:'240px', marginLeft:'20px'}}/>
-          <input name='location' type="text" value={this.state.profile.location} onChange={this.handleChange} placeholder='Location' style={{border:'solid 1px #000', width:'240px', marginLeft:'20px'}}/>
-          <button type='submit' onClick={(event) => this.createProfile(event, user)}>Create</button>
-        </form>
+        <div className="profileindex">
+          <h1>Add Profile</h1>
+          <p> {this.state.flashMessage}</p>
+          <form>
+            <input name='name' type="text" value={this.state.profile.name} onChange={this.handleChange} placeholder='Name' style={{border:'solid 1px #000', width:'240px', marginLeft:'20px'}}/>
+            <input name='location' type="text" value={this.state.profile.location} onChange={this.handleChange} placeholder='Location' style={{border:'solid 1px #000', width:'240px', marginLeft:'20px'}}/>
+            <button type='submit' onClick={(event) => this.createProfile(event, user)}>Create</button>
+          </form>
+        </div>
       </React.Fragment>
     )
   }

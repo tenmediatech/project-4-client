@@ -233,3 +233,20 @@ button:active {
   font-size: 20px;
   letter-spacing: 1px;
 }
+
+.profileindex {
+  transition: box-shadow .3s;
+  width: 50%;
+  height: auto;
+  margin: 50px;
+  border-radius:10px;
+  border: 1px solid #ccc;
+  background: #fff;
+  float: left;
+  padding: 20px;
+  margin-left: 20%;
+}
+
+.profileindex:hover {
+  box-shadow: 0 0 11px rgba(33,33,33,.2);
+}

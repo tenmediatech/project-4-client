@@ -23,10 +23,6 @@ class ProfileUpdate extends React.Component {
     })
   }
 
-  // handleChange = event => this.setState({
-  //   [event.target.name]: event.target.value
-  // })
-
   handleUpdate = (event, user, edited) => {
     event.preventDefault()
     const { id } = this.props
@@ -60,16 +56,21 @@ class ProfileUpdate extends React.Component {
     const {name, location} = this.state
     const { id, user } = this.props
     return (
+      <div className="profileindex">
+        <h2>Edit Profile</h2>
+        {/*
+        <p>Name: {this.state.profile.name}</p>
+        <p>Location: {this.state.profile.location}</p>*/}
+        <form>
+          <label htmlFor='name'>Name</label>
+          <input id='name' name='name' type="text" value={name} onChange={this.handleChange} style={{border:'solid 1px #000', width:'240px', marginLeft:'20px'}}/>
 
-      <form>
-        <label htmlFor='name'>Name</label>
-        <input id='name' name='name' type="text" value={name} onChange={this.handleChange} style={{border:'solid 1px #000', width:'240px', marginLeft:'20px'}}/>
+          <label htmlFor='location'>Location</label>
+          <input id='location' name='location' type="text" value={location} onChange={this.handleChange} style={{border:'solid 1px #000', width:'240px', marginLeft:'20px'}}/>
 
-        <label htmlFor='location'>Location</label>
-        <input id='location' name='location' type="text" value={location} onChange={this.handleChange} style={{border:'solid 1px #000', width:'240px', marginLeft:'20px'}}/>
-
-        <button type="submit" onClick={(event) => this.handleUpdate(event, user)}>Update</button>
-      </form>
+          <button type="submit" onClick={(event) => this.handleUpdate(event, user)}>Update</button>
+        </form>
+      </div>
     )
   }
 }
