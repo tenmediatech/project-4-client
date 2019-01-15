@@ -7,6 +7,24 @@ $warning: #f1e681;
 $error: #f08181;
 $charcoal: #ccc;
 
+body {
+  background: url("img/weatherback.jpg") no-repeat;
+  background-color: #72d5f9;
+  background-size: cover;
+}
+
+.textcenter {
+  margin-top: 200px;
+  // margin-left: 300px;
+  color: #fff;
+  font-size: 30px;
+  border-radius: 3px;
+  font-family: "Helvetica Neue","Helvetica",Helvetica,Arial,sans-serif;
+    /*  <--- */
+    font-style: italic;
+    text-align: center;
+}
+
 .flash-success,
 .flash-warning,
 .flash-error {
@@ -95,24 +113,11 @@ $charcoal: #ccc;
   color: #fff;
 }
 
-// .title-container__title {
-//   font-size: 40px;
-//   letter-spacing: 2px;
-//   font-family: 'Roboto Slab', serif;
-// }
-
-// .title-container__subtitle {
-//   font-style: italic;
-//   font-weight: 100;
-//   letter-spacing: 1px;
-//   font-family: "Merriweather", serif;
-// }
-
 .form-container {
   // background-color: #2c3e50;
-  height: 148vh;
+  height: 144vh;
   padding-top: 50px;
-  padding-left: 30px;
+  padding-left: 87px;
   margin-bottom: 100px;
   overflow: hidden;
   color: #000;
@@ -140,8 +145,6 @@ input[type="text"]:not(.profileinput) {
   margin-right: 20px;
   font-size: 20px;
 }
-
-
 
 input[type="text"]:not(.profileinput) {
     outline: none;

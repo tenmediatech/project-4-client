@@ -16,6 +16,7 @@ import ProfileIndex from './ProfileIndex'
 import CreateNew from './CreateNew'
 import Profile from './Profile'
 import ProfileUpdate from './ProfileUpdate'
+import Hometext from './auth/components/Hometext'
 
 class App extends Component {
   constructor () {
